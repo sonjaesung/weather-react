@@ -1,0 +1,12 @@
+.loadingDiv {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fdf6aa;
+}
+
+.loadingSpan {
+    font-size: 30;
+    color: black;
+}
