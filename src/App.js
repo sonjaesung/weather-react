@@ -1,6 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
+
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
+
 import axios from "axios";
 
 let weatherAPIkey = "f5743327496c233e8201e58a2c6235c2";
@@ -49,6 +51,8 @@ export default class App extends React.Component {
 
     render() {
         let { isLoading, temp, weather, country } = this.state;
-        return isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />;
+        return (
+            <Fragment>{isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}</Fragment>
+        );
     }
 }
