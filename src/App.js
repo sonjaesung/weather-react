@@ -1,5 +1,9 @@
 import React, { Fragment } from "react";
 
+import Header from "./component/Header";
+import LeftMenu from "./component/LeftMenu";
+import Footer from "./component/Footer";
+
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
 
@@ -52,7 +56,10 @@ export default class App extends React.Component {
     render() {
         let { isLoading, temp, weather, country } = this.state;
         return (
-            <Fragment>{isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}</Fragment>
+            <Fragment>
+                <Header />
+                {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
+            </Fragment>
         );
     }
 }
