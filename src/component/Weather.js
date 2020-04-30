@@ -46,6 +46,12 @@ let weatherOption = {
         subTitle: "Atmosphere I don't know",
         icon: "Rain.png",
     },
+    Mist: {
+        gradient: [["#373b44", "#4286f4"]],
+        title: "Atmosphere",
+        subTitle: "Atmosphere I don't know",
+        icon: "Rain.png",
+    }
 };
 
 export default function Weather({ temp, weather, country }) {
