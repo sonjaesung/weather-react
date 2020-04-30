@@ -55,16 +55,11 @@ export default class App extends React.Component {
 
     render() {
         let { isLoading, temp, weather, country } = this.state;
-<<<<<<< HEAD
-        console.log(isLoading, temp, weather, country);
-        return isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />;
-=======
         return (
             <Fragment>
                 <Header />
                 {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
             </Fragment>
         );
->>>>>>> 1f6327ec8e3a73113d4a7f975ddd30fb91f8b154
     }
 }
