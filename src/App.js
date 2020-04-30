@@ -11,7 +11,7 @@ import axios from "axios";
 
 let weatherAPIkey = "f5743327496c233e8201e58a2c6235c2";
 
-export default class App extends React.Component {
+class App extends React.Component {
     state = {
         isLoading: true,
     };
@@ -63,3 +63,5 @@ export default class App extends React.Component {
         );
     }
 }
+
+export default App;
