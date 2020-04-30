@@ -1,6 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
+
+import Header from "./component/Header";
+import LeftMenu from "./component/LeftMenu";
+import Footer from "./component/Footer";
+
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
+
 import axios from "axios";
 
 let weatherAPIkey = "f5743327496c233e8201e58a2c6235c2";
@@ -49,7 +55,16 @@ export default class App extends React.Component {
 
     render() {
         let { isLoading, temp, weather, country } = this.state;
+<<<<<<< HEAD
         console.log(isLoading, temp, weather, country);
         return isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />;
+=======
+        return (
+            <Fragment>
+                <Header />
+                {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
+            </Fragment>
+        );
+>>>>>>> 1f6327ec8e3a73113d4a7f975ddd30fb91f8b154
     }
 }
