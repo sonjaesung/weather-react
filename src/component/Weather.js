@@ -1,6 +1,5 @@
 import React from "react";
 import { Gradient } from "react-gradient";
-
 import "../css/Weather.css";
 
 let weatherOption = {
