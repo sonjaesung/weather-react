@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import "../css/Footer.css";
 
 export default class Footer extends Component {
     render() {

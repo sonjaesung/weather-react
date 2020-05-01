@@ -41,24 +41,78 @@ let weatherOption = {
         icon: "Clouds.png",
     },
     Atmosphere: {
-        gradient: [["#373b44", "#4286f4"]],
+        gradient: [["#bdc3c7", "#2c3e50"]],
         title: "Atmosphere",
-        subTitle: "Atmosphere I don't know",
-        icon: "Rain.png",
+        subTitle: "가시거리에 주의하세요",
+        icon: "Haze.png",
     },
     Mist: {
-        gradient: [["#373b44", "#4286f4"]],
-        title: "Atmosphere",
-        subTitle: "Atmosphere I don't know",
-        icon: "Rain.png",
-    }
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "안개",
+        subTitle: "가시거리에 주의하세요",
+        icon: "Haze.png",
+    },
+    Haze: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "안개",
+        subTitle: "가시거리에 주의하세요",
+        icon: "Haze.png",
+    },
+    Mist: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "안개",
+        subTitle: "가시거리에 주의하세요",
+        icon: "Haze.png",
+    },
+    Smoke: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "안개",
+        subTitle: "가시거리에 주의하세요",
+        icon: "Haze.png",
+    },
+    Dust: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "미세먼지",
+        subTitle: "마스크를 착용하세요",
+        icon: "Sand.png",
+    },
+    Fog: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "안개",
+        subTitle: "가시거리에 주의하세요",
+        icon: "Haze.png",
+    },
+    Sand: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "황사",
+        subTitle: "마스크를 착용하세요",
+        icon: "Sand.png",
+    },
+    Ash: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "안개",
+        subTitle: "가시거리에 주의하세요",
+        icon: "Haze.png",
+    },
+    Squall: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "돌풍",
+        subTitle: "바람에 주의하세요",
+        icon: "Haze.png",
+    },
+    Tornado: {
+        gradient: [["#bdc3c7", "#2c3e50"]],
+        title: "안개",
+        subTitle: "토네이도!! 외출 금지!!",
+        icon: "Tornado.png",
+    },
 };
 
 export default function Weather({ temp, weather, country }) {
     return (
         <Gradient
             gradients={weatherOption[weather].gradient} // required
-            className="weatherDiv"
+            className="weatherGradient"
         >
             <div className="harfContainer">
                 <div>

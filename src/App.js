@@ -59,6 +59,7 @@ class App extends React.Component {
             <Fragment>
                 <Header />
                 {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
+                <Footer />
             </Fragment>
         );
     }

@@ -1,0 +1,52 @@
+.headerDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.leftHead {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.cetnerHead {
+    width: 100%;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightHead {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.menuBtn {
+    background-color: white;
+    padding: 0;
+    border: none;
+}
+
+.menuImg,
+.homeImg {
+    width: 30%;
+    height: 30%;
+    margin: 10px;
+}
+
+.headTitle {
+    font-size: 20px;
+    font-weight: 600;
+}
