@@ -16,6 +16,9 @@
         "react-scripts": "3.4.1",
         "react-weathericons": "^1.0.4",
         "styled-components": "^5.1.0",
+        "styled-flex-component": "^3.0.0",
+        "styled-reset": "^4.1.4",
+        "typography": "^0.16.19",
         "weather-icons-react": "^1.2.0"
     },
     "scripts": {
