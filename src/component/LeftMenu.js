@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import '../css/LeftMenu.css';
 
 export default class LeftMenu extends Component {
     render() {

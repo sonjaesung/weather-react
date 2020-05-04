@@ -93,7 +93,8 @@ const App = () => {
     return (
         <Fragment>
             <Header />
-                {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
+            <LeftMenu />
+            {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
             <Footer />
         </Fragment>
     )
