@@ -1,5 +1,7 @@
 import React from "react";
 import { Gradient } from "react-gradient";
+
+// import InputTest from './inputTest';
 import "../css/Weather.css";
 
 let weatherOption = {
@@ -108,6 +110,9 @@ let weatherOption = {
 };
 
 export default function Weather({ temp, weather, country }) {
+    const maxLength = value => value.length <= 10;
+    //const name = InputTest('Mr. ', maxLength);
+    
     return (
         <Gradient
             gradients={weatherOption[weather].gradient} // required
@@ -126,6 +131,8 @@ export default function Weather({ temp, weather, country }) {
                 <span className="title">{weatherOption[weather].title}</span>
                 <span className="subTitle">{weatherOption[weather].subTitle}</span>
             </div>
+            {/* ...something 으로 이벤트, 함수, 변수등 모든걸 한번에 표현 가능.*/}
+            {/*<input {...name} />*/}
         </Gradient>
     );
 }
