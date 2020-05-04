@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect  } from "react";
 
 import Header from "./component/Header";
 import LeftMenu from "./component/LeftMenu";
@@ -11,12 +11,20 @@ import axios from "axios";
 
 let weatherAPIkey = "f5743327496c233e8201e58a2c6235c2";
 
-class App extends React.Component {
+const App = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [temp, setTemp] = useState("");
+    const [weather, setWeather] = useState("");
+    const [country, setCountry] = useState("");
+
+    /*
     state = {
         isLoading: true,
     };
+    */
 
-    getWeather = async (latitude, longitude) => {
+    const getWeather = async (latitude, longitude) => {
         let {
             data: {
                 main: { temp },
@@ -26,33 +34,49 @@ class App extends React.Component {
         } = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIkey}&units=metric`
         );
-
+        
+        setTemp(temp);
+        setWeather(weather[0].main);
+        setCountry(country);
+        setIsLoading(false);
+        /*
         this.setState({
             isLoading: false,
             temp: temp,
             weather: weather[0].main,
             country: country,
         });
+        */
     };
 
-    getLocation = () => {
+    const getLocation = () => {
         try {
             navigator.geolocation.getCurrentPosition(async (position) => {
                 let {
                     coords: { latitude, longitude },
                 } = position;
 
-                this.getWeather(latitude, longitude);
+                getWeather(latitude, longitude);
             });
         } catch (err) {
             alert(err);
         }
     };
 
+    /*
     componentDidMount() {
-        this.getLocation();
+        getLocation();
     }
+    */
 
+    // componentDidMount, componentDidUpdate와 같은 방식으로
+    // isLoading 가 변경될 때만 적용.
+    useEffect(() => {
+        getLocation();
+    }, [isLoading]);
+    
+
+    /*
     render() {
         let { isLoading, temp, weather, country } = this.state;
         return (
@@ -63,6 +87,16 @@ class App extends React.Component {
             </Fragment>
         );
     }
+    */
+
+    // react hooks 이용.
+    return (
+        <Fragment>
+            <Header />
+                {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
+            <Footer />
+        </Fragment>
+    )
 }
 
 export default App;
