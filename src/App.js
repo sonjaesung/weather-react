@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect  } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 import Header from "./component/Header";
 import LeftMenu from "./component/LeftMenu";
@@ -12,7 +12,6 @@ import axios from "axios";
 let weatherAPIkey = "f5743327496c233e8201e58a2c6235c2";
 
 const App = () => {
-
     const [isLoading, setIsLoading] = useState(true);
     const [temp, setTemp] = useState("");
     const [weather, setWeather] = useState("");
@@ -34,7 +33,7 @@ const App = () => {
         } = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIkey}&units=metric`
         );
-        
+
         setTemp(temp);
         setWeather(weather[0].main);
         setCountry(country);
@@ -74,7 +73,6 @@ const App = () => {
     useEffect(() => {
         getLocation();
     }, [isLoading]);
-    
 
     /*
     render() {
@@ -97,7 +95,7 @@ const App = () => {
             {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
             <Footer />
         </Fragment>
-    )
-}
+    );
+};
 
 export default App;

@@ -108,7 +108,6 @@ let weatherOption = {
 };
 
 export default function Weather({ temp, weather, country }) {
-
     return (
         <Gradient
             gradients={weatherOption[weather].gradient} // required
