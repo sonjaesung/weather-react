@@ -33,7 +33,7 @@ const LeftMenu = () => {
                         </Link>
                     </div>
                     <div className='menuContent'>
-                        <Link className='linkStyle' to="/">
+                        <Link className='linkStyle' to="/TodayEnglish">
                             <span>오늘의 영어</span>
                             <img src={require(`../img/English.png`)} height="20" width="23" style={{marginLeft: 10}} />
                         </Link>

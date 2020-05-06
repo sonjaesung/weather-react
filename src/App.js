@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { HashRouter } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 
 import Header from "./component/Header";
 import LeftMenu from "./component/LeftMenu";
@@ -7,6 +7,7 @@ import Footer from "./component/Footer";
 
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
+import TodayEnglish from './component/TodayEnglish';
 
 import axios from "axios";
 
@@ -92,10 +93,12 @@ const App = () => {
     return (
         <Fragment>
             <HashRouter>
-            <Header />
-            <LeftMenu />
-            {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
-            <Footer />
+                <Header />
+                <LeftMenu />
+                <Route path="/" component={isLoading ? Loading : Weahter} />
+                <Route path="/todayEnglish" component={TodayEnglish} exact={true} />
+                {/*isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />*/}
+                <Footer />
             </HashRouter>
         </Fragment>
     );
