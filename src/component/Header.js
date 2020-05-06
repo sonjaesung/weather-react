@@ -5,7 +5,7 @@ import "../css/Header.css";
 const Header = () => {
     const changeMenuCheck = () => {
         let leftMenu = document.querySelector(".leftMenuDiv");
-        leftMenu.style.width = "100%";
+        leftMenu.style.width = "80%";
     };
 
     return (

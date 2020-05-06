@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: rgb(12, 212, 119);
+    background-color: wheat;
 }
 
 .menuHeadLeft {
@@ -46,7 +46,7 @@
 .menuExitBtn {
     padding: 0;
     border: none;
-    background-color: rgb(12, 212, 119);
+    background-color: wheat;
 }
 
 .menuExitImg {
@@ -58,4 +58,17 @@
 .menuTitle {
     font-size: 20px;
     font-weight: 600;
+}
+
+.menuContent {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    border-style: outset;
+    margin-bottom: 5px;
+}
+
+.linkStyle {
+    font-size: 15px;
+    text-decoration: none;
 }

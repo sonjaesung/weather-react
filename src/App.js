@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { HashRouter } from "react-router-dom";
 
 import Header from "./component/Header";
 import LeftMenu from "./component/LeftMenu";
@@ -90,10 +91,12 @@ const App = () => {
     // react hooks 이용.
     return (
         <Fragment>
+            <HashRouter>
             <Header />
             <LeftMenu />
             {isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />}
             <Footer />
+            </HashRouter>
         </Fragment>
     );
 };

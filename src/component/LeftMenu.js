@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 
 import Header from "./Header";
 import "../css/LeftMenu.css";
@@ -25,11 +26,24 @@ const LeftMenu = () => {
                     </div>
                 </div>
                 <div className="menuBody">
-                    <ul>
-                        <li>오늘의 날씨</li>
-                        <li>오늘의 영어</li>
-                        <li>오늘의 할일</li>
-                    </ul>
+                    <div className='menuContent'>
+                        <Link className='linkStyle' to="/">
+                            <span>오늘의 날씨</span>
+                            <img src={require(`../img/Clear.png`)} height="16" width="16" style={{marginLeft: 10}} />
+                        </Link>
+                    </div>
+                    <div className='menuContent'>
+                        <Link className='linkStyle' to="/">
+                            <span>오늘의 영어</span>
+                            <img src={require(`../img/English.png`)} height="20" width="23" style={{marginLeft: 10}} />
+                        </Link>
+                    </div>
+                    <div className='menuContent'>
+                        <Link className='linkStyle' to="/">
+                            <span>오늘의 할일</span>
+                            <img src={require(`../img/Check.png`)} height="20" width="23" style={{marginLeft: 10}} />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </Fragment>
