@@ -95,7 +95,11 @@ const App = () => {
             <HashRouter>
                 <Header />
                 <LeftMenu />
-                <Route path="/" component={isLoading ? Loading : Weahter} />
+                <Route path="/" render={ () => 
+                    isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />
+                    } 
+                    exact={true}
+                />
                 <Route path="/todayEnglish" component={TodayEnglish} exact={true} />
                 {/*isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />*/}
                 <Footer />

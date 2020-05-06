@@ -1,9 +1,12 @@
 import React, {Fragment} from "react";
+import '../css/English.css'
 
 const TodayEnglish = () => {
     return (
         <Fragment>
-            <span>english here</span>
+            <div className='englishDiv'>
+                <span>english here</span>
+            </div>
         </Fragment>
     );
 }
