@@ -6,3 +6,56 @@
     align-items: center;
     justify-content: center;
 }
+
+.englishHeadfContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.englishCenterContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.englishBottomContainer {
+    width: 100%;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.englishTextArea {
+    width: 80%;
+    height: 50%;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.englishBtnDiv {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.englishBtn {
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: white;
+    border-style: solid;
+    border-color: blueviolet;
+    color: blueviolet;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px;
+}
