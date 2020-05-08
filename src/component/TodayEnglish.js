@@ -13,7 +13,6 @@ const TodayEnglish = () => {
     }, [todayEnglish]);
 
     useEffect(() => {
-        console.log("here");
         if (englishArray.length !== 0) {
             localStorage.setItem("english", JSON.stringify(englishArray));
         }
@@ -23,19 +22,34 @@ const TodayEnglish = () => {
         document.getElementById("englishTextArea").value = "";
     };
 
+    const textAreaValidation = (text) => {
+        if (text.length === 0) {
+            console.log("exit");
+            return false;
+        } else {
+            return true;
+        }
+    };
+
     const writeEnglish = () => {
         const text = document.getElementById("englishTextArea").value;
+        if (!textAreaValidation(text)) {
+            alert("내용을 입력하세요");
+            return;
+        }
+
+        let tempArr = new Array();
         const textObj = {
             date: new Date(),
             content: text,
         };
+
         if (localStorage.getItem("english") !== null) {
-            let arr = JSON.parse(localStorage.getItem("english"));
-            englishArray.push(textObj);
-        } else {
-            englishArray.push(textObj);
+            tempArr = JSON.parse(localStorage.getItem("english"));
         }
-        setEnglishArray(englishArray);
+
+        tempArr.push(textObj);
+        setEnglishArray(tempArr);
         document.getElementById("englishTextArea").value = "";
     };
 
