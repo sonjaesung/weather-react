@@ -8,6 +8,10 @@ const TodayEnglish = () => {
     const [todayEnglish, setTodayEnglis] = useState("");
     const [englishArray, setEnglishArray] = useState([]);
 
+    const setLocalStorage = (data) => {
+        localStorage.setItem("english", JSON.stringify(data));
+    }
+
     useEffect(() => {
         let headerTitle = document.querySelector('.headTitle');
         headerTitle.innerText = '오늘의 영어';
@@ -19,7 +23,7 @@ const TodayEnglish = () => {
 
     useEffect(() => {
         if (englishArray.length !== 0) {
-            localStorage.setItem("english", JSON.stringify(englishArray));
+            setLocalStorage(englishArray);
         }
         renderTodayEnglishList();
     }, [englishArray]);
@@ -48,6 +52,7 @@ const TodayEnglish = () => {
             date: new Date(),
             content: text,
             id: Date.now(),
+            check: false,
         };
 
         if (localStorage.getItem("english") !== null) {
@@ -87,14 +92,44 @@ const TodayEnglish = () => {
         {
             JSON.parse(localStorage.getItem('english')).map(data => {
                 const li = document.createElement('li');
+                const deleteBtn = document.createElement('button');
+                const span = document.createElement('span');
 
                 li.id = data.id;
-                li.innerText = data.content;
+                span.innerText = data.content;
 
+                if(data.check)
+                {
+                    span.style.textDecoration = "line-through";
+                    span.style.color = "red";
+                }
+
+                deleteBtn.className = 'checkBtn';
+                deleteBtn.innerText = '√';
+                deleteBtn.addEventListener('click', clickCheckBtn);
+
+                li.appendChild(span);
+                li.appendChild(deleteBtn);
                 ul.appendChild(li);
             });
         }
     };
+
+    const clickCheckBtn = (e) => {
+        const span = e.target.parentNode.querySelector('span');
+        
+        span.style.textDecoration = "line-through";
+        span.style.color = "red";
+
+        const tempArry = JSON.parse(localStorage.getItem('english'));
+        tempArry.map((data, count) => {
+            if(data.id === parseInt(e.target.parentNode.id))
+            {
+                tempArry[count].check = true;
+            }
+        });
+        setLocalStorage(tempArry);
+    }
 
     return (
         <Fragment>
@@ -104,6 +139,7 @@ const TodayEnglish = () => {
                 </div>
                 <div className="englishCenterContainer">
                     <textarea
+                        rows="5" 
                         className="englishTextArea"
                         placeholder="오늘의 영문장을 작성하세요"
                         id="englishTextArea"
