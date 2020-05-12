@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Gradient } from "react-gradient";
 import "../css/Weather.css";
 
@@ -108,6 +108,11 @@ let weatherOption = {
 };
 
 export default function Weather({ temp, weather, country }) {
+    useEffect(() => {
+        let headerTitle = document.querySelector('.headTitle');
+        headerTitle.innerText = '오늘의 날씨';
+    });
+
     return (
         <Gradient
             gradients={weatherOption[weather].gradient} // required

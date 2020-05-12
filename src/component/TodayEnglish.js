@@ -7,6 +7,11 @@ const TodayEnglish = () => {
     const [englishArray, setEnglishArray] = useState([]);
 
     useEffect(() => {
+        let headerTitle = document.querySelector('.headTitle');
+        headerTitle.innerText = '오늘의 영어';
+    });
+
+    useEffect(() => {
         if (localStorage.getItem("english") !== null) {
             setEnglishArray(...englishArray, JSON.parse(localStorage.getItem("english")));
         }
