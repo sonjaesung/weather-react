@@ -118,14 +118,16 @@ const TodayEnglish = () => {
     const clickCheckBtn = (e) => {
         const span = e.target.parentNode.querySelector('span');
         
-        span.style.textDecoration = "line-through";
-        span.style.color = "red";
+        
 
         const tempArry = JSON.parse(localStorage.getItem('english'));
         tempArry.map((data, count) => {
             if(data.id === parseInt(e.target.parentNode.id))
             {
-                tempArry[count].check = true;
+                tempArry[count].check = !tempArry[count].check;
+
+                span.style.textDecoration = tempArry[count].check ? "line-through" : "none";
+                span.style.color = tempArry[count].check ? "red" : "black";
             }
         });
         setLocalStorage(tempArry);
