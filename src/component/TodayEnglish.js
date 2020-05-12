@@ -12,8 +12,9 @@ const TodayEnglish = () => {
     });
 
     useEffect(() => {
-        if (localStorage.getItem("english") !== null) {
-            setEnglishArray(...englishArray, JSON.parse(localStorage.getItem("english")));
+        if(todayEnglish !== "")
+        {
+            renderTodayEnglish()
         }
     }, [todayEnglish]);
 
@@ -55,8 +56,13 @@ const TodayEnglish = () => {
 
         tempArr.push(textObj);
         setEnglishArray(tempArr);
+        setTodayEnglis(text);
         document.getElementById("englishTextArea").value = "";
     };
+
+    const renderTodayEnglish = () => {
+        document.querySelector('#todayEnglish').innerText = todayEnglish;
+    }
 
     return (
         <Fragment>
