@@ -10,6 +10,11 @@ const LeftMenu = () => {
         leftMenu.style.width = "0%";
     };
 
+    const clickMenu = () => {
+        let leftMenu = document.querySelector(".leftMenuDiv");
+        leftMenu.style.width = "0%";
+    };
+
     return (
         // react 16 기술. dom 에 추가노드를 생성하지 않음.
         <Fragment>
@@ -26,19 +31,19 @@ const LeftMenu = () => {
                     </div>
                 </div>
                 <div className="menuBody">
-                    <div className='menuContent'>
+                    <div className='menuContent' onClick={clickMenu}>
                         <Link className='linkStyle' to="/">
                             <span>오늘의 날씨</span>
                             <img src={require(`../img/Clear.png`)} height="16" width="16" style={{marginLeft: 10}} />
                         </Link>
                     </div>
-                    <div className='menuContent'>
+                    <div className='menuContent' onClick={clickMenu}>
                         <Link className='linkStyle' to="/TodayEnglish">
                             <span>오늘의 영어</span>
                             <img src={require(`../img/English.png`)} height="20" width="23" style={{marginLeft: 10}} />
                         </Link>
                     </div>
-                    <div className='menuContent'>
+                    <div className='menuContent' onClick={clickMenu}>
                         <Link className='linkStyle' to="/">
                             <span>오늘의 할일</span>
                             <img src={require(`../img/Check.png`)} height="20" width="23" style={{marginLeft: 10}} />
