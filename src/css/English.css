@@ -64,9 +64,10 @@
     transform: scale(0.8);
 }
 
+.deleteBtn,
 .checkBtn {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 7px;
+    margin-right: 7px;
     background-color: white;
     border-style: solid;
     border-color: blueviolet;

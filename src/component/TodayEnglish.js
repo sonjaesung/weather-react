@@ -12,6 +12,19 @@ const TodayEnglish = () => {
         localStorage.setItem("english", JSON.stringify(data));
     }
 
+    const setTodayEnglish = () => {
+        if(localStorage.getItem('english') !== null && JSON.parse(localStorage.getItem('english')).length !== 0)
+        {
+            let localStorageobj = JSON.parse(localStorage.getItem('english'));
+            let lastContent = localStorageobj[localStorageobj.length-1].content;
+            document.querySelector('#todayEnglish').innerText = lastContent;
+        }
+        else
+        {
+            document.querySelector('#todayEnglish').innerText = '오늘의 영문장을 입력하세요';
+        }
+    }
+
     useEffect(() => {
         let headerTitle = document.querySelector('.headTitle');
         headerTitle.innerText = '오늘의 영어';
@@ -71,16 +84,7 @@ const TodayEnglish = () => {
             document.querySelector('#todayEnglish').innerText = todayEnglish;
         }
         else {
-            if(localStorage.getItem('english') !== null)
-            {
-                let localStorageobj = JSON.parse(localStorage.getItem('english'));
-                let lastContent = localStorageobj[localStorageobj.length-1].content;
-                document.querySelector('#todayEnglish').innerText = lastContent;
-            }
-            else
-            {
-                document.querySelector('#todayEnglish').innerText = '오늘의 영문장을 입력하세요';
-            }
+            setTodayEnglish();
         }
     }
 
@@ -92,23 +96,34 @@ const TodayEnglish = () => {
         {
             JSON.parse(localStorage.getItem('english')).map(data => {
                 const li = document.createElement('li');
-                const deleteBtn = document.createElement('button');
+                const checkBtn = document.createElement('button');
                 const span = document.createElement('span');
+                const deleteBtn = document.createElement('button');
 
                 li.id = data.id;
-                span.innerText = data.content;
+                span.innerText = data.content;                
+
+                checkBtn.className = 'checkBtn';
+                checkBtn.innerText = '√';
+                checkBtn.addEventListener('click', clickCheckBtn);
+
+                deleteBtn.className = 'deleteBtn';
+                deleteBtn.innerText = 'X';
+                deleteBtn.addEventListener('click', clickDeleteBtn);
 
                 if(data.check)
                 {
                     span.style.textDecoration = "line-through";
                     span.style.color = "red";
+                    deleteBtn.style.display = 'inline';
+                }
+                else
+                {
+                    deleteBtn.style.display = 'none';
                 }
 
-                deleteBtn.className = 'checkBtn';
-                deleteBtn.innerText = '√';
-                deleteBtn.addEventListener('click', clickCheckBtn);
-
                 li.appendChild(span);
+                li.appendChild(checkBtn);
                 li.appendChild(deleteBtn);
                 ul.appendChild(li);
             });
@@ -117,10 +132,9 @@ const TodayEnglish = () => {
 
     const clickCheckBtn = (e) => {
         const span = e.target.parentNode.querySelector('span');
-        
-        
-
+        const delBtn = e.target.parentNode.querySelector('.deleteBtn');
         const tempArry = JSON.parse(localStorage.getItem('english'));
+
         tempArry.map((data, count) => {
             if(data.id === parseInt(e.target.parentNode.id))
             {
@@ -128,9 +142,21 @@ const TodayEnglish = () => {
 
                 span.style.textDecoration = tempArry[count].check ? "line-through" : "none";
                 span.style.color = tempArry[count].check ? "red" : "black";
+                delBtn.style.display = tempArry[count].check ? 'inline' : 'none';
             }
         });
         setLocalStorage(tempArry);
+    }
+
+    const clickDeleteBtn = (e) => {
+        const id = parseInt(e.target.parentNode.id);
+        const tempArry = JSON.parse(localStorage.getItem('english'));
+
+        let newLocalArray = tempArry.filter(data => data.id !== id)
+        
+        setEnglishArray(newLocalArray);
+        setLocalStorage(newLocalArray);
+        setTodayEnglish();
     }
 
     return (
