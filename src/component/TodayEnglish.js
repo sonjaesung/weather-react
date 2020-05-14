@@ -89,24 +89,43 @@ const TodayEnglish = () => {
     }
 
     const renderTodayEnglishList = () => {
-        let ul = document.querySelector('.englishList');
-        ul.innerText = '';
+        let englishBottomContainer = document.querySelector('.englishBottomContainer');
+        englishBottomContainer.innerText = '';
         
         if(localStorage.getItem('english') !== null)
         {
             JSON.parse(localStorage.getItem('english')).map(data => {
-                const li = document.createElement('li');
+                const containerDiv = document.createElement('div');
+                const contentDiv = document.createElement('div');
+                const btnDiv = document.createElement('div');
+
                 const checkBtn = document.createElement('button');
                 const span = document.createElement('span');
                 const deleteBtn = document.createElement('button');
 
-                li.id = data.id;
+                containerDiv.style.display = 'flex';
+                containerDiv.style.width = '80%';
+                contentDiv.style.display = 'flex';
+                contentDiv.style.flex = '5';
+                btnDiv.style.display = 'flex';
+                btnDiv.style.flex = '1';
+
+                containerDiv.style.marginTop = '10px';
+                containerDiv.style.marginBottom = '10px';
+                containerDiv.id = data.id;
+                containerDiv.className = 'containerDiv';
+
+                contentDiv.className = 'contentDiv';
+                btnDiv.className = 'btnDiv';
+
                 span.innerText = data.content;                
 
+                checkBtn.style.height = 'fit-content';
                 checkBtn.className = 'checkBtn';
                 checkBtn.innerText = '√';
                 checkBtn.addEventListener('click', clickCheckBtn);
 
+                deleteBtn.style.height = 'fit-content';
                 deleteBtn.className = 'deleteBtn';
                 deleteBtn.innerText = 'X';
                 deleteBtn.addEventListener('click', clickDeleteBtn);
@@ -122,21 +141,23 @@ const TodayEnglish = () => {
                     deleteBtn.style.display = 'none';
                 }
 
-                li.appendChild(span);
-                li.appendChild(checkBtn);
-                li.appendChild(deleteBtn);
-                ul.appendChild(li);
+                containerDiv.appendChild(contentDiv);
+                containerDiv.appendChild(btnDiv);
+                contentDiv.appendChild(span);
+                btnDiv.appendChild(checkBtn);
+                btnDiv.appendChild(deleteBtn);
+                englishBottomContainer.appendChild(containerDiv);
             });
         }
     };
 
     const clickCheckBtn = (e) => {
-        const span = e.target.parentNode.querySelector('span');
+        const span = e.target.parentNode.parentNode.querySelector('.contentDiv').querySelector('span');
         const delBtn = e.target.parentNode.querySelector('.deleteBtn');
         const tempArry = JSON.parse(localStorage.getItem('english'));
 
         tempArry.map((data, count) => {
-            if(data.id === parseInt(e.target.parentNode.id))
+            if(data.id === parseInt(e.target.parentNode.parentNode.id))
             {
                 tempArry[count].check = !tempArry[count].check;
 
@@ -149,7 +170,7 @@ const TodayEnglish = () => {
     }
 
     const clickDeleteBtn = (e) => {
-        const id = parseInt(e.target.parentNode.id);
+        const id = parseInt(e.target.parentNode.parentNode.id);
         const tempArry = JSON.parse(localStorage.getItem('english'));
 
         let newLocalArray = tempArry.filter(data => data.id !== id)
@@ -182,7 +203,7 @@ const TodayEnglish = () => {
                     </div>
                 </div>
                 <div className="englishBottomContainer">
-                    <ul className='englishList'></ul>
+                    
                 </div>
             </div>
         </Fragment>
