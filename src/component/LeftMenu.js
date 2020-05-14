@@ -44,8 +44,8 @@ const LeftMenu = () => {
                         </Link>
                     </div>
                     <div className='menuContent' onClick={clickMenu}>
-                        <Link className='linkStyle' to="/">
-                            <span>오늘의 할일</span>
+                        <Link className='linkStyle' to="/Bucketlist">
+                            <span>버킷리스트</span>
                             <img src={require(`../img/Check.png`)} height="20" width="23" style={{marginLeft: 10}} />
                         </Link>
                     </div>

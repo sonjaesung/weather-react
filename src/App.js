@@ -8,6 +8,7 @@ import Footer from "./component/Footer";
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
 import TodayEnglish from './component/TodayEnglish';
+import Bucketlist from './component/Bucketlist';
 
 import axios from "axios";
 
@@ -102,6 +103,7 @@ const App = () => {
                 />
                 <Route path="/todayEnglish" component={TodayEnglish} exact={true} />
                 {/*isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />*/}
+                <Route path="/bucketList" component={Bucketlist} exact={true} />
                 <Footer />
             </HashRouter>
         </Fragment>
