@@ -1,4 +1,5 @@
 import React, { Component, Fragment, useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "../css/Header.css";
 
@@ -21,9 +22,11 @@ const Header = () => {
                     <span className="headTitle">오늘의 날씨</span>
                 </div>
                 <div className="rightHead">
-                    <button className="menuBtn">
-                        <img className="homeImg" src={require(`../img/Home.png`)} />
-                    </button>
+                    <Link to="/">
+                        <button className="menuBtn">
+                            <img className="homeImg" src={require(`../img/Home.png`)} />
+                        </button>
+                    </Link>
                 </div>
             </div>
         </Fragment>
