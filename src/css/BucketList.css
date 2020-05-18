@@ -6,3 +6,35 @@
     align-items: center;
     justify-content: center;
 }
+
+.bucketHeadContainer {
+    width: 100%;
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.bucketCenterContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bucketBottomContainer {
+    width: 100%;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.updateImg {
+    width: 300px;
+    height: auto;
+}

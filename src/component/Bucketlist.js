@@ -8,10 +8,27 @@ const Bucketlist = () => {
         headerTitle.innerText = "버킷리스트";
     });
 
+    const readInputFile = (e) => {
+        let updateImg = document.getElementById("updateImg");
+        let file = e.target.files;
+        let fileArray = Array.prototype.slice.call(file);
+
+        fileArray.forEach((element) => {
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                updateImg.src = e.target.result;
+            };
+            reader.readAsDataURL(element);
+        });
+    };
+
     return (
         <Fragment>
             <div className="bucketListDiv">
-                <div className="bucketHeadContainer"></div>
+                <div className="bucketHeadContainer">
+                    <img className="updateImg" id="updateImg" />
+                </div>
                 <div className="bucketCenterContainer">
                     <input
                         type="file"
@@ -20,8 +37,8 @@ const Bucketlist = () => {
                         accept="img/*"
                         required
                         multiple
+                        onChange={readInputFile}
                     />
-                    <button className="browse-btn">사진업로드</button>
                 </div>
                 <div className="bucketBottomContainer"></div>
             </div>
