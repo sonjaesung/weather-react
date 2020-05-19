@@ -3,31 +3,26 @@ import React, { Fragment, useState, useEffect } from "react";
 import "../css/English.css";
 
 const TodayEnglish = () => {
-    
-
     const [todayEnglish, setTodayEnglis] = useState("");
     const [englishArray, setEnglishArray] = useState([]);
 
     const setLocalStorage = (data) => {
         localStorage.setItem("english", JSON.stringify(data));
-    }
+    };
 
     const setTodayEnglish = () => {
-        if(localStorage.getItem('english') !== null && JSON.parse(localStorage.getItem('english')).length !== 0)
-        {
-            let localStorageobj = JSON.parse(localStorage.getItem('english'));
-            let lastContent = localStorageobj[localStorageobj.length-1].content;
-            document.querySelector('#todayEnglish').innerText = lastContent;
+        if (localStorage.getItem("english") !== null && JSON.parse(localStorage.getItem("english")).length !== 0) {
+            let localStorageobj = JSON.parse(localStorage.getItem("english"));
+            let lastContent = localStorageobj[localStorageobj.length - 1].content;
+            document.querySelector("#todayEnglish").innerText = lastContent;
+        } else {
+            document.querySelector("#todayEnglish").innerText = "오늘의 영문장을 입력하세요";
         }
-        else
-        {
-            document.querySelector('#todayEnglish').innerText = '오늘의 영문장을 입력하세요';
-        }
-    }
+    };
 
     useEffect(() => {
-        let headerTitle = document.querySelector('.headTitle');
-        headerTitle.innerText = '오늘의 영어';
+        let headerTitle = document.querySelector(".headTitle");
+        headerTitle.innerText = "오늘의 영어";
     });
 
     useEffect(() => {
@@ -79,66 +74,60 @@ const TodayEnglish = () => {
     };
 
     const renderTodayEnglish = () => {
-        if(todayEnglish !== "")
-        {
-            document.querySelector('#todayEnglish').innerText = todayEnglish;
-        }
-        else {
+        if (todayEnglish !== "") {
+            document.querySelector("#todayEnglish").innerText = todayEnglish;
+        } else {
             setTodayEnglish();
         }
-    }
+    };
 
     const renderTodayEnglishList = () => {
-        let englishBottomContainer = document.querySelector('.englishBottomContainer');
-        englishBottomContainer.innerText = '';
-        
-        if(localStorage.getItem('english') !== null)
-        {
-            JSON.parse(localStorage.getItem('english')).map(data => {
-                const containerDiv = document.createElement('div');
-                const contentDiv = document.createElement('div');
-                const btnDiv = document.createElement('div');
+        let englishBottomContainer = document.querySelector(".englishBottomContainer");
+        englishBottomContainer.innerText = "";
 
-                const checkBtn = document.createElement('button');
-                const span = document.createElement('span');
-                const deleteBtn = document.createElement('button');
+        if (localStorage.getItem("english") !== null) {
+            JSON.parse(localStorage.getItem("english")).map((data) => {
+                const containerDiv = document.createElement("div");
+                const contentDiv = document.createElement("div");
+                const btnDiv = document.createElement("div");
 
-                containerDiv.style.display = 'flex';
-                containerDiv.style.width = '80%';
-                contentDiv.style.display = 'flex';
-                contentDiv.style.flex = '5';
-                btnDiv.style.display = 'flex';
-                btnDiv.style.flex = '1';
+                const checkBtn = document.createElement("button");
+                const span = document.createElement("span");
+                const deleteBtn = document.createElement("button");
 
-                containerDiv.style.marginTop = '10px';
-                containerDiv.style.marginBottom = '10px';
+                containerDiv.style.display = "flex";
+                containerDiv.style.width = "80%";
+                contentDiv.style.display = "flex";
+                contentDiv.style.flex = "5";
+                btnDiv.style.display = "flex";
+                btnDiv.style.flex = "1";
+
+                containerDiv.style.marginTop = "10px";
+                containerDiv.style.marginBottom = "10px";
                 containerDiv.id = data.id;
-                containerDiv.className = 'containerDiv';
+                containerDiv.className = "containerDiv";
 
-                contentDiv.className = 'contentDiv';
-                btnDiv.className = 'btnDiv';
+                contentDiv.className = "contentDiv";
+                btnDiv.className = "btnDiv";
 
-                span.innerText = data.content;                
+                span.innerText = data.content;
 
-                checkBtn.style.height = 'fit-content';
-                checkBtn.className = 'checkBtn';
-                checkBtn.innerText = '√';
-                checkBtn.addEventListener('click', clickCheckBtn);
+                checkBtn.style.height = "fit-content";
+                checkBtn.className = "checkBtn";
+                checkBtn.innerText = "√";
+                checkBtn.addEventListener("click", clickCheckBtn);
 
-                deleteBtn.style.height = 'fit-content';
-                deleteBtn.className = 'deleteBtn';
-                deleteBtn.innerText = 'X';
-                deleteBtn.addEventListener('click', clickDeleteBtn);
+                deleteBtn.style.height = "fit-content";
+                deleteBtn.className = "deleteBtn";
+                deleteBtn.innerText = "X";
+                deleteBtn.addEventListener("click", clickDeleteBtn);
 
-                if(data.check)
-                {
+                if (data.check) {
                     span.style.textDecoration = "line-through";
                     span.style.color = "red";
-                    deleteBtn.style.display = 'inline';
-                }
-                else
-                {
-                    deleteBtn.style.display = 'none';
+                    deleteBtn.style.display = "inline";
+                } else {
+                    deleteBtn.style.display = "none";
                 }
 
                 containerDiv.appendChild(contentDiv);
@@ -152,33 +141,32 @@ const TodayEnglish = () => {
     };
 
     const clickCheckBtn = (e) => {
-        const span = e.target.parentNode.parentNode.querySelector('.contentDiv').querySelector('span');
-        const delBtn = e.target.parentNode.querySelector('.deleteBtn');
-        const tempArry = JSON.parse(localStorage.getItem('english'));
+        const span = e.target.parentNode.parentNode.querySelector(".contentDiv").querySelector("span");
+        const delBtn = e.target.parentNode.querySelector(".deleteBtn");
+        const tempArry = JSON.parse(localStorage.getItem("english"));
 
         tempArry.map((data, count) => {
-            if(data.id === parseInt(e.target.parentNode.parentNode.id))
-            {
+            if (data.id === parseInt(e.target.parentNode.parentNode.id)) {
                 tempArry[count].check = !tempArry[count].check;
 
                 span.style.textDecoration = tempArry[count].check ? "line-through" : "none";
-                span.style.color = tempArry[count].check ? "red" : "black";
-                delBtn.style.display = tempArry[count].check ? 'inline' : 'none';
+                span.style.color = tempArry[count].check ? "red" : "white";
+                delBtn.style.display = tempArry[count].check ? "inline" : "none";
             }
         });
         setLocalStorage(tempArry);
-    }
+    };
 
     const clickDeleteBtn = (e) => {
         const id = parseInt(e.target.parentNode.parentNode.id);
-        const tempArry = JSON.parse(localStorage.getItem('english'));
+        const tempArry = JSON.parse(localStorage.getItem("english"));
 
-        let newLocalArray = tempArry.filter(data => data.id !== id)
-        
+        let newLocalArray = tempArry.filter((data) => data.id !== id);
+
         setEnglishArray(newLocalArray);
         setLocalStorage(newLocalArray);
         setTodayEnglish();
-    }
+    };
 
     return (
         <Fragment>
@@ -188,7 +176,7 @@ const TodayEnglish = () => {
                 </div>
                 <div className="englishCenterContainer">
                     <textarea
-                        rows="5" 
+                        rows="5"
                         className="englishTextArea"
                         placeholder="오늘의 영문장을 작성하세요"
                         id="englishTextArea"
@@ -202,9 +190,7 @@ const TodayEnglish = () => {
                         </button>
                     </div>
                 </div>
-                <div className="englishBottomContainer">
-                    
-                </div>
+                <div className="englishBottomContainer"></div>
             </div>
         </Fragment>
     );
