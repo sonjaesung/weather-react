@@ -16,8 +16,35 @@ import "../css/Home.css";
           };
     });
 
-    function getTime() {
+    const getTime = () => {
         setCurrentTime(new Date());
+    }
+
+    const clickLogin = () => {
+        const email = document.getElementById('email').value;
+        const pw = document.getElementById('pw').value;
+
+        if(validation(email, pw))
+        {
+            return;
+        }
+    }
+
+    const validation = (email, pw) => {
+        if(email === "")
+        {
+            alert('E-mail 을 입력하세요.');
+            return false;
+        }
+        else if(pw === "")
+        {
+            alert('비밀번호를 입력하세요.');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     return (
@@ -29,12 +56,13 @@ import "../css/Home.css";
                     </div>
                 </div>
                 <div className="homeContainerCenter">
-                    <input placeholder='E-Mail 을 입력하세요' type='email' className='homeInput'></input>
-                    <input placeholder='비밀번호를 입력하세요' type='password' className='homeInput'></input>
-                    <button className='loginBtn'>Login</button>
+                    <input placeholder='E-Mail 을 입력하세요' type='email' className='homeInput' id='email'></input>
+                    <input placeholder='비밀번호를 입력하세요' type='password' className='homeInput' id='pw'></input>
+                    <button className='loginBtn' onClick={clickLogin}>Login</button>
                     <div className='homeBtnDiv'>
-                        <button className='btn'>join</button>
-                        <button className='btn'>find</button>
+                        <button className='btn'>회원가입</button>
+                        <button className='btn'>이메일 찾기</button>
+                        <button className='btn'>비밀번호 재설정</button>
                     </div>
                 </div>
                 <div className="homeContainerBottom"></div>
