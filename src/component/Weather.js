@@ -107,11 +107,32 @@ let weatherOption = {
     },
 };
 
-export default function Weather({ temp, weather, country }) {
+export default function Weather({ temp, weather, country, temp_max, temp_min, humidity, feels_like }) {
     useEffect(() => {
         let headerTitle = document.querySelector('.headTitle');
         headerTitle.innerText = '오늘의 날씨';
+        renderWeather();
     });
+
+    const renderWeather = () => {
+        let currentTemp = document.querySelector('.temp');
+        let tempHtml = '';
+        const { innerWidth: width } = window;
+
+        if(width>414)
+        {
+            tempHtml =`현재기온: ${temp}℃ <br />
+            최저기온: ${temp_min}℃ / 최대기온: ${temp_max}℃ <br />
+            습도: ${humidity}% <br /><br />
+            체감온도: ${feels_like}℃`;
+            currentTemp.innerHTML=tempHtml;
+        }
+        else
+        {
+            tempHtml = `${temp}℃`;
+            currentTemp.innerHTML=tempHtml;
+        }
+    }
 
     return (
         <Gradient

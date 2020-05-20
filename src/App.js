@@ -20,6 +20,10 @@ const App = () => {
     const [temp, setTemp] = useState("");
     const [weather, setWeather] = useState("");
     const [country, setCountry] = useState("");
+    const [temp_max, setTemp_max] = useState("");
+    const [temp_min, setTemp_min] = useState("");
+    const [humidity, setHumidity] = useState("");
+    const [feels_like, setFeels_like] = useState("");
 
     /*
     state = {
@@ -30,10 +34,10 @@ const App = () => {
     const getWeather = async (latitude, longitude) => {
         let {
             data: {
-                main: { temp },
+                main: { temp, temp_max, temp_min, humidity, feels_like },
                 weather,
                 sys: { country },
-            },
+            }, data
         } = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIkey}&units=metric`
         );
@@ -41,6 +45,10 @@ const App = () => {
         setTemp(temp);
         setWeather(weather[0].main);
         setCountry(country);
+        setTemp_max(temp_max);
+        setTemp_min(temp_min);
+        setHumidity(humidity);
+        setFeels_like(feels_like);
         setIsLoading(false);
         /*
         this.setState({
@@ -99,7 +107,7 @@ const App = () => {
                 <LeftMenu />
                 <Route path="/" component={Home} exact={true} />
                 <Route path="/weather" render={ () => 
-                    isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />
+                    isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} temp_max={temp_max} temp_min={temp_min} humidity={humidity} feels_like={feels_like} />
                     } 
                     exact={true}
                 />
