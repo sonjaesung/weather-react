@@ -96,7 +96,6 @@ const TodayEnglish = () => {
                 const deleteBtn = document.createElement("button");
 
                 containerDiv.style.display = "flex";
-                containerDiv.style.width = "80%";
                 contentDiv.style.display = "flex";
                 contentDiv.style.flex = "5";
                 btnDiv.style.display = "flex";
@@ -110,6 +109,7 @@ const TodayEnglish = () => {
                 contentDiv.className = "contentDiv";
                 btnDiv.className = "btnDiv";
 
+                span.className='contentSpan';
                 span.innerText = data.content;
 
                 checkBtn.style.height = "fit-content";
