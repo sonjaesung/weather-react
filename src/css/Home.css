@@ -85,3 +85,30 @@
 .homeBtnDiv .btn:active {
     transform: translateY(2px);
 }
+
+@media (min-width: 414px) { 
+    .clockSpan {
+        font-size: 80px;
+        font-weight: 800;
+    }
+
+    .homeInput {
+        width: 600px;
+        font-size: 20px;
+    }
+
+    .homeBtn {
+        font-size: 20px;
+    }
+
+    .homeBtnDiv {
+        margin-top: 30px;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .homeBtnDiv .btn {
+        font-size: 20px;
+    }
+}
