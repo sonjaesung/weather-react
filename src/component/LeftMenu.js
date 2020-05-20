@@ -32,7 +32,7 @@ const LeftMenu = () => {
                 </div>
                 <div className="menuBody">
                     <div className='menuContent' onClick={clickMenu}>
-                        <Link className='linkStyle' to="/">
+                        <Link className='linkStyle' to="/Weather">
                             <span>오늘의 날씨</span>
                             <img src={require(`../img/Clear.png`)} height="16" width="16" style={{marginLeft: 10}} />
                         </Link>

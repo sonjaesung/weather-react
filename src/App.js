@@ -5,6 +5,7 @@ import Header from "./component/Header";
 import LeftMenu from "./component/LeftMenu";
 import Footer from "./component/Footer";
 
+import Home from './component/Home';
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
 import TodayEnglish from './component/TodayEnglish';
@@ -96,7 +97,8 @@ const App = () => {
             <HashRouter>
                 <Header />
                 <LeftMenu />
-                <Route path="/" render={ () => 
+                <Route path="/" component={Home} exact={true} />
+                <Route path="/weather" render={ () => 
                     isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />
                     } 
                     exact={true}
