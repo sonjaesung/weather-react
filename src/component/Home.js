@@ -31,7 +31,7 @@ import "../css/Home.css";
                 <div className="homeContainerCenter">
                     <input placeholder='E-Mail 을 입력하세요' type='email' className='homeInput'></input>
                     <input placeholder='비밀번호를 입력하세요' type='password' className='homeInput'></input>
-                    <button className='homeBtn'>Login</button>
+                    <button className='loginBtn'>Login</button>
                     <div className='homeBtnDiv'>
                         <button className='btn'>join</button>
                         <button className='btn'>find</button>

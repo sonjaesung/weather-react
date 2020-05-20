@@ -63,4 +63,8 @@
         height: 30px;
         padding: 10px;
     } 
+
+    .menuBtn {
+        cursor: pointer;
+    }
 }

@@ -72,3 +72,13 @@
     font-size: 15px;
     text-decoration: none;
 }
+
+@media (min-width: 414px) { 
+    .menuContent .linkStyle .linkSpan {
+        font-size: 20px;
+    }
+
+    .menuExitBtn {
+        cursor: pointer;
+    }
+}

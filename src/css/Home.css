@@ -50,7 +50,7 @@
     text-align: center;
 }
 
-.homeBtn {
+.loginBtn {
     margin: 10px;
     background-color: white;
     border-style: solid;
@@ -97,8 +97,9 @@
         font-size: 20px;
     }
 
-    .homeBtn {
+    .loginBtn {
         font-size: 20px;
+        cursor: pointer;
     }
 
     .homeBtnDiv {
@@ -110,5 +111,6 @@
 
     .homeBtnDiv .btn {
         font-size: 20px;
+        cursor: pointer;
     }
 }

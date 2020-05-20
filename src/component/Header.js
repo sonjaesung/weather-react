@@ -5,8 +5,16 @@ import "../css/Header.css";
 
 const Header = () => {
     const changeMenuCheck = () => {
+        const { innerWidth: width } = window;
         let leftMenu = document.querySelector(".leftMenuDiv");
-        leftMenu.style.width = "80%";
+        if(width>414)
+        {
+            leftMenu.style.width = "500px";
+        }
+        else
+        {
+            leftMenu.style.width = "80%";
+        }
     };
 
     return (

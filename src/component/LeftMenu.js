@@ -33,19 +33,19 @@ const LeftMenu = () => {
                 <div className="menuBody">
                     <div className='menuContent' onClick={clickMenu}>
                         <Link className='linkStyle' to="/Weather">
-                            <span>오늘의 날씨</span>
+                            <span className='linkSpan'>오늘의 날씨</span>
                             <img src={require(`../img/Clear.png`)} height="16" width="16" style={{marginLeft: 10}} />
                         </Link>
                     </div>
                     <div className='menuContent' onClick={clickMenu}>
                         <Link className='linkStyle' to="/TodayEnglish">
-                            <span>오늘의 영어</span>
+                            <span className='linkSpan'>오늘의 영어</span>
                             <img src={require(`../img/English.png`)} height="20" width="23" style={{marginLeft: 10}} />
                         </Link>
                     </div>
                     <div className='menuContent' onClick={clickMenu}>
                         <Link className='linkStyle' to="/Bucketlist">
-                            <span>버킷리스트</span>
+                            <span className='linkSpan'>버킷리스트</span>
                             <img src={require(`../img/Check.png`)} height="20" width="23" style={{marginLeft: 10}} />
                         </Link>
                     </div>
