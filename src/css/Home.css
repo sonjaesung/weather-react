@@ -79,6 +79,7 @@
     padding: 5px;
     border-radius: 50px;
     box-shadow: 3px 3px 0px 0px black;
+    width: 95%;
 }
 
 .homeBtn:active, 
@@ -112,5 +113,6 @@
     .homeBtnDiv .btn {
         font-size: 20px;
         cursor: pointer;
+        width: 100%;
     }
 }

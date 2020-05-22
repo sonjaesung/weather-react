@@ -6,6 +6,7 @@ import LeftMenu from "./component/LeftMenu";
 import Footer from "./component/Footer";
 
 import Home from './component/Home';
+import Join from './component/Join';
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
 import TodayEnglish from './component/TodayEnglish';
@@ -106,6 +107,7 @@ const App = () => {
                 <Header />
                 <LeftMenu />
                 <Route path="/" component={Home} exact={true} />
+                <Route path="/join" component={Join} exact={true} />
                 <Route path="/weather" render={ () => 
                     isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} temp_max={temp_max} temp_min={temp_min} humidity={humidity} feels_like={feels_like} />
                     } 

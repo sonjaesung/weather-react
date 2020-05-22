@@ -1,4 +1,6 @@
 import React, {useState, useEffect, Fragment} from "react";
+import { Link } from "react-router-dom";
+
 import "../css/Home.css";
 
  const Home = () => {
@@ -56,13 +58,19 @@ import "../css/Home.css";
                     </div>
                 </div>
                 <div className="homeContainerCenter">
-                    <input placeholder='E-Mail 을 입력하세요' type='email' className='homeInput' id='email'></input>
-                    <input placeholder='비밀번호를 입력하세요' type='password' className='homeInput' id='pw'></input>
+                    <input placeholder='E-Mail 을 입력하세요' type='email' className='homeInput' id='email' />
+                    <input placeholder='비밀번호를 입력하세요' type='password' className='homeInput' id='pw' />
                     <button className='loginBtn' onClick={clickLogin}>Login</button>
                     <div className='homeBtnDiv'>
-                        <button className='btn'>회원가입</button>
-                        <button className='btn'>이메일 찾기</button>
-                        <button className='btn'>비밀번호 재설정</button>
+                        <Link className='linkStyle' to="/Join">
+                            <button className='btn'>회원가입</button>
+                        </Link>
+                        <Link className='linkStyle' to="/Find-Email">
+                            <button className='btn'>이메일 찾기</button>
+                        </Link>
+                        <Link className='linkStyle' to="/Reset-Pw">
+                            <button className='btn'>비밀번호 재설정</button>
+                        </Link>
                     </div>
                 </div>
                 <div className="homeContainerBottom"></div>
