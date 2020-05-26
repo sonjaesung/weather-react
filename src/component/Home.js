@@ -32,9 +32,14 @@ const Home = () => {
         }
         */
 
-        await axios.post("/login").then(function (res) {
-            console.log(res);
-        });
+        await axios
+            .post("/login", {
+                email,
+                pw,
+            })
+            .then(function (res) {
+                console.log(res);
+            });
     };
 
     const validation = (email, pw) => {
