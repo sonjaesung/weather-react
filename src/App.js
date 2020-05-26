@@ -33,11 +33,6 @@ const App = () => {
     */
 
     const getWeather = async (latitude, longitude) => {
-        console.log("here");
-        await axios.post("/test").then(function (res) {
-            console.log(res);
-        });
-
         let {
             data: {
                 main: { temp, temp_max, temp_min, humidity, feels_like },
