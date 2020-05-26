@@ -5,12 +5,12 @@ import Header from "./component/Header";
 import LeftMenu from "./component/LeftMenu";
 import Footer from "./component/Footer";
 
-import Home from './component/Home';
-import Join from './component/Join';
+import Home from "./component/Home";
+import Join from "./component/Join";
 import Loading from "./component/Loading";
 import Weahter from "./component/Weather";
-import TodayEnglish from './component/TodayEnglish';
-import Bucketlist from './component/Bucketlist';
+import TodayEnglish from "./component/TodayEnglish";
+import Bucketlist from "./component/Bucketlist";
 
 import axios from "axios";
 
@@ -33,12 +33,18 @@ const App = () => {
     */
 
     const getWeather = async (latitude, longitude) => {
+        console.log("here");
+        await axios.post("/test").then(function (res) {
+            console.log(res);
+        });
+
         let {
             data: {
                 main: { temp, temp_max, temp_min, humidity, feels_like },
                 weather,
                 sys: { country },
-            }, data
+            },
+            data,
         } = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIkey}&units=metric`
         );
@@ -108,9 +114,23 @@ const App = () => {
                 <LeftMenu />
                 <Route path="/" component={Home} exact={true} />
                 <Route path="/join" component={Join} exact={true} />
-                <Route path="/weather" render={ () => 
-                    isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} temp_max={temp_max} temp_min={temp_min} humidity={humidity} feels_like={feels_like} />
-                    } 
+                <Route
+                    path="/weather"
+                    render={() =>
+                        isLoading ? (
+                            <Loading />
+                        ) : (
+                            <Weahter
+                                temp={temp}
+                                weather={weather}
+                                country={country}
+                                temp_max={temp_max}
+                                temp_min={temp_min}
+                                humidity={humidity}
+                                feels_like={feels_like}
+                            />
+                        )
+                    }
                     exact={true}
                 />
                 <Route path="/todayEnglish" component={TodayEnglish} exact={true} />
