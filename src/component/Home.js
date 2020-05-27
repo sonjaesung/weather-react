@@ -33,7 +33,7 @@ const Home = () => {
         */
 
         await axios
-            .post("/login", {
+            .post("http://ec2-13-125-208-250.ap-northeast-2.compute.amazonaws.com/login", {
                 email,
                 pw,
             })
