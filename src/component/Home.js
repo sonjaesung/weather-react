@@ -26,11 +26,9 @@ const Home = () => {
         const email = document.getElementById("email").value;
         const pw = document.getElementById("pw").value;
 
-        /*
         if (!validation(email, pw)) {
             return;
         }
-        */
 
         await axios
             .post("/login", {

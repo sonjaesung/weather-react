@@ -26,24 +26,32 @@ import axios from "axios";
             }
         });
 
-        await axios
-            .post("/join", {
-                email,
-                pw,
-                name,
-                phone,
-                gender
-            })
-            .then(function (res) {
-                console.log(res);
-            });
-
-        /*
         if(!validation(email, pw, pwAgain, name, phone, gender))
         {
             return ;
         }   
-        */
+
+       await axios
+       .post("/join", {
+           email,
+           pw,
+           name,
+           phone,
+           gender
+       })
+       .then(function (res) {
+           let result = res.data;
+
+           if(result)
+           {
+                alert('회원가입을 정상적으로 완료하였습니다.');
+                window.location.href = './';
+           }
+           else
+           {
+                alert('회원가입 실패!!');
+           }
+       });
     }
 
     const validation = (email, pw, pwAgain, name, phone, gender) => {
@@ -81,6 +89,13 @@ import axios from "axios";
         return true;
     }
 
+    const phoneMaxLength = (e) => {
+        if(e.target.value.length > e.target.maxLength)
+        {
+            e.target.value = e.target.value.slice(0, e.target.maxLength);
+        }
+    }
+
     return (
         <Fragment>
             <div className='joinDiv'>
@@ -89,7 +104,7 @@ import axios from "axios";
                     <input placeholder='비밀번호를 입력하세요' type='password' className='joinInput' id='joinPw' />
                     <input placeholder='비밀번호를 확인하세요' type='password' className='joinInput' id='joinPwCheck' />
                     <input placeholder='이름을 입력하세요' type='text' className='joinInput' id='joinName' />
-                    <input placeholder='전화버호를 (-)없이 입력하세요' type='number' className='joinInput' id='joinPhone' />
+                    <input placeholder='전화버호를 (-)없이 입력하세요' type='number' className='joinInput' id='joinPhone' maxLength='11' onChange={phoneMaxLength} />
                     <div className='genderDiv'>
                         <fieldset className='genderFieldset'>
                         <legend>성별</legend>
