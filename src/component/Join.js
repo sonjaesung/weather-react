@@ -1,6 +1,8 @@
 import React, {useState, useEffect, Fragment} from "react";
 import "../css/Join.css";
 
+import axios from "axios";
+
  const Join = () => {
 
     useEffect(() => {
@@ -8,7 +10,7 @@ import "../css/Join.css";
         headerTitle.innerText = '회원가입';
     });
 
-    const clickJoinBtn = () => {
+    const clickJoinBtn = async () => {
         let email = document.getElementById('joinEmail').value;
         let pw = document.getElementById('joinPw').value;
         let pwAgain = document.getElementById('joinPwCheck').value;
@@ -24,10 +26,24 @@ import "../css/Join.css";
             }
         });
 
+        await axios
+            .post("/join", {
+                email,
+                pw,
+                name,
+                phone,
+                gender
+            })
+            .then(function (res) {
+                console.log(res);
+            });
+
+        /*
         if(!validation(email, pw, pwAgain, name, phone, gender))
         {
             return ;
         }   
+        */
     }
 
     const validation = (email, pw, pwAgain, name, phone, gender) => {
