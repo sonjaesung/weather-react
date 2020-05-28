@@ -33,12 +33,20 @@ const Home = () => {
         */
 
         await axios
-            .post("http://ec2-13-125-208-250.ap-northeast-2.compute.amazonaws.com/login", {
+            .post("/login", {
                 email,
                 pw,
             })
             .then(function (res) {
-                console.log(res);
+                let result = res.data;
+
+                if(result === null)
+                {
+                    alert('로그인실패!! 다시 입력해 주세요');
+                }
+                else{
+                    alert(result.name + '님 환영합니다!!');
+                }
             });
     };
 
