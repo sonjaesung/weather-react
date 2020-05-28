@@ -37,6 +37,7 @@ const Home = () => {
             })
             .then(function (res) {
                 let result = res.data;
+                console.log(res);
 
                 if(result === null)
                 {
