@@ -2,70 +2,69 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// import "../css/Home.css";
+import "../css/Home.css";
 
 const Home = () => {
-    // const [currentTime, setCurrentTime] = useState(new Date());
+    const [currentTime, setCurrentTime] = useState(new Date());
 
-    // useEffect(() => {
-    //     let headerTitle = document.querySelector(".headTitle");
-    //     headerTitle.innerText = "Home";
+    useEffect(() => {
+        let headerTitle = document.querySelector(".headTitle");
+        headerTitle.innerText = "Home";
 
-    //     var timerID = setInterval(() => getTime(), 1000);
+        var timerID = setInterval(() => getTime(), 1000);
 
-    //     return function cleanup() {
-    //         clearInterval(timerID);
-    //     };
-    // });
+        return function cleanup() {
+            clearInterval(timerID);
+        };
+    });
 
-    // const getTime = () => {
-    //     setCurrentTime(new Date());
-    // };
+    const getTime = () => {
+        setCurrentTime(new Date());
+    };
 
-    // const clickLogin = async () => {
-    //     const email = document.getElementById("email").value;
-    //     const pw = document.getElementById("pw").value;
+    const clickLogin = async () => {
+        const email = document.getElementById("email").value;
+        const pw = document.getElementById("pw").value;
 
-    //     if (!validation(email, pw)) {
-    //         return;
-    //     }
+        if (!validation(email, pw)) {
+            return;
+        }
 
-    //     await axios
-    //         .post("http://ec2-13-125-208-250.ap-northeast-2.compute.amazonaws.com:3000/login", {
-    //             email,
-    //             pw,
-    //         })
-    //         .then(function (res) {
-    //             let result = res.data;
-    //             console.log(res);
+        await axios
+            .post("http://ec2-13-125-208-250.ap-northeast-2.compute.amazonaws.com:3000/login", {
+                email,
+                pw,
+            })
+            .then(function (res) {
+                let result = res.data;
+                console.log(res);
 
-    //             if(result === null)
-    //             {
-    //                 alert('로그인실패!! 다시 입력해 주세요');
-    //             }
-    //             else{
-    //                 alert(result.name + '님 환영합니다!!');
-    //             }
-    //         });
-    // };
+                if(result === null)
+                {
+                    alert('로그인실패!! 다시 입력해 주세요');
+                }
+                else{
+                    alert(result.name + '님 환영합니다!!');
+                }
+            });
+    };
 
-    // const validation = (email, pw) => {
-    //     if (email === "") {
-    //         alert("E-mail 을 입력하세요.");
-    //         return false;
-    //     } else if (pw === "") {
-    //         alert("비밀번호를 입력하세요.");
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // };
+    const validation = (email, pw) => {
+        if (email === "") {
+            alert("E-mail 을 입력하세요.");
+            return false;
+        } else if (pw === "") {
+            alert("비밀번호를 입력하세요.");
+            return false;
+        } else {
+            return true;
+        }
+    };
 
     return (
         <Fragment>
             <div className="homeDiv">
-                <span>hello</span>
-                {/* <div className="homeContainerHeader">
+                <div className="homeContainerHeader">
                     <div className="clock">
                         <span className="clockSpan">{currentTime.toLocaleTimeString()}</span>
                     </div>
@@ -88,7 +87,7 @@ const Home = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="homeContainerBottom"></div> */}
+                <div className="homeContainerBottom"></div>
             </div>
         </Fragment>
     );

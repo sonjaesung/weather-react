@@ -1,30 +1,30 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { HashRouter, Route } from "react-router-dom";
 
-// import Header from "./component/Header";
-// import LeftMenu from "./component/LeftMenu";
-// import Footer from "./component/Footer";
+import Header from "./component/Header";
+import LeftMenu from "./component/LeftMenu";
+import Footer from "./component/Footer";
 
 import Home from "./component/Home";
-// import Join from "./component/Join";
-// import Loading from "./component/Loading";
-// import Weahter from "./component/Weather";
-// import TodayEnglish from "./component/TodayEnglish";
-// import Bucketlist from "./component/Bucketlist";
+import Join from "./component/Join";
+import Loading from "./component/Loading";
+import Weahter from "./component/Weather";
+import TodayEnglish from "./component/TodayEnglish";
+import Bucketlist from "./component/Bucketlist";
 
-// import axios from "axios";
+import axios from "axios";
 
 let weatherAPIkey = "f5743327496c233e8201e58a2c6235c2";
 
 const App = () => {
-    // const [isLoading, setIsLoading] = useState(true);
-    // const [temp, setTemp] = useState("");
-    // const [weather, setWeather] = useState("");
-    // const [country, setCountry] = useState("");
-    // const [temp_max, setTemp_max] = useState("");
-    // const [temp_min, setTemp_min] = useState("");
-    // const [humidity, setHumidity] = useState("");
-    // const [feels_like, setFeels_like] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+    const [temp, setTemp] = useState("");
+    const [weather, setWeather] = useState("");
+    const [country, setCountry] = useState("");
+    const [temp_max, setTemp_max] = useState("");
+    const [temp_min, setTemp_min] = useState("");
+    const [humidity, setHumidity] = useState("");
+    const [feels_like, setFeels_like] = useState("");
 
     /*
     state = {
@@ -32,49 +32,49 @@ const App = () => {
     };
     */
 
-    // const getWeather = async (latitude, longitude) => {
-    //     let {
-    //         data: {
-    //             main: { temp, temp_max, temp_min, humidity, feels_like },
-    //             weather,
-    //             sys: { country },
-    //         },
-    //         data,
-    //     } = await axios.get(
-    //         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIkey}&units=metric`
-    //     );
+    const getWeather = async (latitude, longitude) => {
+        let {
+            data: {
+                main: { temp, temp_max, temp_min, humidity, feels_like },
+                weather,
+                sys: { country },
+            },
+            data,
+        } = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPIkey}&units=metric`
+        );
 
-    //     setTemp(temp);
-    //     setWeather(weather[0].main);
-    //     setCountry(country);
-    //     setTemp_max(temp_max);
-    //     setTemp_min(temp_min);
-    //     setHumidity(humidity);
-    //     setFeels_like(feels_like);
-    //     setIsLoading(false);
-    //     /*
-    //     this.setState({
-    //         isLoading: false,
-    //         temp: temp,
-    //         weather: weather[0].main,
-    //         country: country,
-    //     });
-    //     */
-    // };
+        setTemp(temp);
+        setWeather(weather[0].main);
+        setCountry(country);
+        setTemp_max(temp_max);
+        setTemp_min(temp_min);
+        setHumidity(humidity);
+        setFeels_like(feels_like);
+        setIsLoading(false);
+        /*
+        this.setState({
+            isLoading: false,
+            temp: temp,
+            weather: weather[0].main,
+            country: country,
+        });
+        */
+    };
 
-    // const getLocation = () => {
-    //     try {
-    //         navigator.geolocation.getCurrentPosition(async (position) => {
-    //             let {
-    //                 coords: { latitude, longitude },
-    //             } = position;
+    const getLocation = () => {
+        try {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                let {
+                    coords: { latitude, longitude },
+                } = position;
 
-    //             getWeather(latitude, longitude);
-    //         });
-    //     } catch (err) {
-    //         alert(err);
-    //     }
-    // };
+                getWeather(latitude, longitude);
+            });
+        } catch (err) {
+            alert(err);
+        }
+    };
 
     /*
     componentDidMount() {
@@ -84,11 +84,9 @@ const App = () => {
 
     // componentDidMount, componentDidUpdate와 같은 방식으로
     // isLoading 가 변경될 때만 적용.
-    /*
     useEffect(() => {
         getLocation();
     }, [isLoading]);
-    */
 
     /*
     render() {
@@ -107,11 +105,10 @@ const App = () => {
     return (
         <Fragment>
             <HashRouter>
-                <Home />
-                {/* <Header />
-                <LeftMenu /> */}
-                {/* <Route path="/" component={Home} exact={true} /> */}
-                {/* <Route path="/join" component={Join} exact={true} />
+                <Header />
+                <LeftMenu />
+                <Route path="/" component={Home} exact={true} />
+                <Route path="/join" component={Join} exact={true} />
                 <Route
                     path="/weather"
                     render={() =>
@@ -131,10 +128,10 @@ const App = () => {
                     }
                     exact={true}
                 />
-                <Route path="/todayEnglish" component={TodayEnglish} exact={true} /> */}
+                <Route path="/todayEnglish" component={TodayEnglish} exact={true} />
                 {/*isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />*/}
-                {/* <Route path="/bucketList" component={Bucketlist} exact={true} /> */}
-                {/* <Footer /> */}
+                <Route path="/bucketList" component={Bucketlist} exact={true} />
+                <Footer />
             </HashRouter>
         </Fragment>
     );
