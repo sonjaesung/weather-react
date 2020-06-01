@@ -84,9 +84,11 @@ const App = () => {
 
     // componentDidMount, componentDidUpdate와 같은 방식으로
     // isLoading 가 변경될 때만 적용.
+    /*
     useEffect(() => {
         getLocation();
     }, [isLoading]);
+    */
 
     /*
     render() {
