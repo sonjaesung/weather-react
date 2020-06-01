@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import "../css/Home.css";
+// import "../css/Home.css";
 
 const Home = () => {
     const [currentTime, setCurrentTime] = useState(new Date());

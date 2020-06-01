@@ -107,8 +107,8 @@ const App = () => {
     return (
         <Fragment>
             <HashRouter>
-                <Header />
-                <LeftMenu />
+                {/* <Header />
+                <LeftMenu /> */}
                 <Route path="/" component={Home} exact={true} />
                 {/* <Route path="/join" component={Join} exact={true} />
                 <Route
@@ -133,7 +133,7 @@ const App = () => {
                 <Route path="/todayEnglish" component={TodayEnglish} exact={true} /> */}
                 {/*isLoading ? <Loading /> : <Weahter temp={temp} weather={weather} country={country} />*/}
                 {/* <Route path="/bucketList" component={Bucketlist} exact={true} /> */}
-                <Footer />
+                {/* <Footer /> */}
             </HashRouter>
         </Fragment>
     );
