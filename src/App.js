@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { HashRouter, Route } from "react-router-dom";
 
-import Header from "./component/Header";
-import LeftMenu from "./component/LeftMenu";
-import Footer from "./component/Footer";
+// import Header from "./component/Header";
+// import LeftMenu from "./component/LeftMenu";
+// import Footer from "./component/Footer";
 
 import Home from "./component/Home";
 // import Join from "./component/Join";
@@ -17,14 +17,14 @@ import Home from "./component/Home";
 let weatherAPIkey = "f5743327496c233e8201e58a2c6235c2";
 
 const App = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [temp, setTemp] = useState("");
-    const [weather, setWeather] = useState("");
-    const [country, setCountry] = useState("");
-    const [temp_max, setTemp_max] = useState("");
-    const [temp_min, setTemp_min] = useState("");
-    const [humidity, setHumidity] = useState("");
-    const [feels_like, setFeels_like] = useState("");
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [temp, setTemp] = useState("");
+    // const [weather, setWeather] = useState("");
+    // const [country, setCountry] = useState("");
+    // const [temp_max, setTemp_max] = useState("");
+    // const [temp_min, setTemp_min] = useState("");
+    // const [humidity, setHumidity] = useState("");
+    // const [feels_like, setFeels_like] = useState("");
 
     /*
     state = {
@@ -107,9 +107,10 @@ const App = () => {
     return (
         <Fragment>
             <HashRouter>
+                <Home />
                 {/* <Header />
                 <LeftMenu /> */}
-                <Route path="/" component={Home} exact={true} />
+                {/* <Route path="/" component={Home} exact={true} /> */}
                 {/* <Route path="/join" component={Join} exact={true} />
                 <Route
                     path="/weather"
